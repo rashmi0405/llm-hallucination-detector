@@ -4,7 +4,7 @@ Paste a source document and an answer an LLM wrote from it. The app scores how l
 
 Built end to end: a **statistics study** of which LLMs hallucinate, **16 engineered features**, **classic ML** (logistic regression, XGBoost), a **fine-tuned transformer** (DeBERTa-v3), a **statistically tested** ensemble, and a **live demo app**. Total cost: $0.
 
-![App screenshot](images/app.png)
+![App screenshot](app.png)
 
 **Live app:** _add your Streamlit link here_ · **Model:** _add your Hugging Face model link here_
 
@@ -30,7 +30,7 @@ Evaluated on the RAGTruth test set: **2,675 answers from 450 source documents** 
 
 Random guessing gives PR-AUC 0.353, the share of hallucinated test answers.
 
-![Detector comparison](images/detector_comparison.png)
+![Detector comparison](detector_comparison.png)
 
 ### What the statistics showed
 
@@ -39,13 +39,13 @@ Random guessing gives PR-AUC 0.353, the share of hallucinated test answers.
 - **Not every gap is real.** Logistic regression was not significantly better than the single "new-word share" feature (ROC-AUC p = 0.15 after Holm correction). A power check showed the test set can only detect ROC-AUC gaps of about 0.02, so the DeBERTa vs XGBoost ROC-AUC gap (+0.015) is "too small to be sure", while its PR-AUC gap (+0.043) is significant (p < 0.001).
 - **Summaries are the hardest task** for every detector (ROC-AUC about 0.68), compared with about 0.8 for question answering and data-to-text.
 
-![ROC-AUC by LLM](images/auc_by_llm.png)
+![ROC-AUC by LLM](auc_by_llm.png)
 
 ### Which LLMs hallucinate? (statistics study)
 
 Every source in RAGTruth was answered by all six LLMs, so they can be compared on identical inputs.
 
-![Hallucination rate by LLM](images/rate_by_llm.png)
+![Hallucination rate by LLM](rate_by_llm.png)
 
 - **The models differ hugely.** Chi-square and Cochran's Q are both p < 0.001. 14 of 15 pairwise McNemar tests are significant after Holm correction; only **GPT-3.5 vs GPT-4** is not (p = 0.64).
 - **Logistic regression** with cluster-robust standard errors (clustered by source), against GPT-4 as the baseline:
@@ -60,7 +60,7 @@ Every source in RAGTruth was answered by all six LLMs, so they can be compared o
 
 ## Architecture
 
-![Architecture](images/architecture.png)
+![Architecture](architecture.png)
 
 | Step | Notebook | What it does |
 |---|---|---|
